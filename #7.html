@@ -1,0 +1,75 @@
+<!-- Topics: Pass data from component to vue -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>7. Vue Js Basic</title>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery_google.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div id="app">
+			<div class="row mt-2">
+			<div class="col-md-6">
+				<h3>Child Component</h3>
+				<sidebar :user="username" v-model="cvalue"></sidebar>
+			</div>
+
+			<div class="col-md-6">
+				<h3 class="text-center">Parent</h3>
+				<h3> Other side user is: {{cvalue}}</h3>
+				Enter your name:
+				<input type="text" class="form-control" v-model="name">
+				<button class="btn btn-success" @click.prevent="init()"> Pass to component</button>
+			</div>	
+			
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		Vue.component('sidebar',{
+			template:`
+				<div >
+					<h3> Other side user is: {{user}}</h3>
+					Type Your name:
+					<input type="text" class="form-control" v-model="namechild">
+					<button class="btn btn-danger" @click.prevent:input="pass(namechild)" >Pass to Parent</button>
+				</div>
+			`,
+			props:[
+				'user',
+			],
+			data(){
+				return{
+					namechild:'',
+				}
+			},
+			methods:{
+				pass(namechild){
+					return this.$emit('input',namechild);
+				}
+			},
+		});
+		new Vue ({
+			el:'#app',
+			data:{
+				name:'',
+				username:'',
+				cvalue:'',
+			},
+			methods:{
+				init(){
+					this.username=this.name;
+				}
+			},
+			
+		});
+	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>

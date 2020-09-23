@@ -1,0 +1,58 @@
+<!-- Topics: v-if,v-else,v-show -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Js Basic</title>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery_google.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div id="app">
+			<br>
+			<div v-if='show == show1'>Microsoft</div>
+			<!-- <div v-else-if='show1'>Facebook</div> -->
+
+			<div class="form-group col-lg-6">
+				<input type="text" class="form-control" v-model='text'>
+			</div>
+
+			<div class="form-group col-lg-6">
+				<button class="btn btn-success" v-on:click='find'>Show this</button>
+			</div>
+
+			<div class="form-group col-lg-6">
+				<ol>
+					<li v-for='user in users' v-if='user.name == value || user.email == value'><h4>{{ user.name }} </h4></li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		new Vue ({
+			el:'#app',
+			data:{
+				users:[
+					{name:'Sarthak',email:'bitfumes@gmail.com'},
+					{name:'Ankur',email:'ankur@gmail.com'},
+				],
+				show:'somethingElse',
+				show1:'somethingElse',
+				text:'',
+				value:''
+			},
+			methods:{
+				find:function(){
+					this.value = this.text
+				}
+			}
+		});
+	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>

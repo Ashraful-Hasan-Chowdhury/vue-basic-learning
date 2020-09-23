@@ -1,0 +1,46 @@
+<!-- Topics: Slot and named slots -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>8. Vue Js Basic</title>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery_google.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div id="app">
+			<mycard>About - First normal slot
+				<template slot="myname">Sakib Ashraf - myname slot</template>
+			</mycard>
+		</div>
+	</div>
+	
+	<script>
+		Vue.component('mycard',{
+			template:`
+				<div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+			  <div class="card-header"><slot></slot></div>
+			  <div class="card-body">
+			    <h4 class="card-title"><slot name="myname"></slot></h4>
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			  </div>
+			</div>
+			`,
+		
+		});
+		new Vue ({
+			el:'#app',
+			data:{
+				
+			},
+		
+			
+		});
+	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!-- Topics: v-for -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Js Basic</title>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery_google.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div id="app">
+			<ul>
+				List of some fruits =
+				<li v-for="(value,index,key) in list">
+					{{key+1}} - {{index}} -	{{ value }}
+				</li>
+			</ul>
+
+			<div class="form-group">
+				<input type="text" class="form-control" v-model="newflower" @keyup.enter="add()">
+			</div>
+			
+			List of some flowers = 
+			<ul>
+				<li v-for="(value,index) in flowers">
+					{{index}} -	{{ value }}
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<script>
+		new Vue ({
+			el:'#app',
+			data:{
+				list:{
+					fruit:'apple',
+					fruit1:'mango',
+					fruit2:'banana',
+				},
+				flowers:[
+					flower = 'rose',
+					flower = 'nightqueen',
+				],
+				newflower:'',
+			},
+			methods:{
+				add(){
+					this.flowers.push(this.newflower);
+					this.newflower = '';
+				},
+			},
+			
+		});
+	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>

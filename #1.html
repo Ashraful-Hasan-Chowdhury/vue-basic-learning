@@ -1,0 +1,69 @@
+<!-- Topics: Watch,Method,Computed,Getter-Setter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Js Basic</title>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery_google.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div id="app">
+			<input type="text" v-model="temp" class="offset-5">
+			<h3 :class="className">Computed: {{ reverseC }}</h3>
+			<h3 :class="className">Method: {{ reverseM() }}</h3>
+			<h3 :class="className">Computed: {{ reverseC }}</h3>
+			<br>
+			first Name:<input class="form-control" type="text" v-model="firstname">
+			last Name:<input class="form-control" type="text" v-model="lastname">
+			full Name:<input class="form-control" type="text" v-model="fullname">
+			<h3 :class="className">Full Name: {{ fullname }}</h3>
+
+		</div>
+	</div>
+	<script>
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+		    temp: '',
+		    text:'',
+		    className: 'bg-primary text-light text-center',
+		    firstname:'',
+		    lastname:'',
+		  },
+		  methods:{
+		  	reverseM(){
+		  		return this.text.split('').reverse().join('');
+		  	},
+		  },
+		  computed:{
+		  	reverseC(){
+		  		return this.text.split('').reverse().join('');
+		  	},
+		  	fullname:{
+		  		// Getter
+		  		get(){
+		  			return this.firstname+' '+this.lastname;
+		  		},
+		  		// Setter
+		  		set(name){
+		  			var name = name.split(' ');
+		  			this.firstname = name[0];
+		  			this.lastname= name[name.length - 1];
+		  		}
+		  	},
+		  },
+		  watch:{
+		  	temp(){
+		  		this.text=this.temp;
+		  	}
+		  },
+		})
+	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>

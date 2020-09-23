@@ -1,0 +1,50 @@
+<!-- Topics: vue events -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Js Basic</title>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery_google.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div id="app">
+			<br>
+			<h3 class="bg-danger text-center">clicked {{counter}} Times</h3>
+			
+			<form action="">	
+			<div class="form-group">
+				<button class="btn btn-info" @click.submit.prevent="count()">Click As much as u want</button>
+				<button class="btn btn-info" @click.submit.prevent.once="count()">Click Once</button>
+				<button class="btn btn-info" @click.submit.prevent @click="count()">Prevent submitting form</button>
+				<button class="btn btn-info" @click.submit.prevent.alt="alert()">click + alt</button>
+			</div>
+			</form>
+			
+		</div>
+	</div>
+	
+	<script>
+		new Vue ({
+			el:'#app',
+			data:{
+				counter:0,
+			},
+			methods:{
+				count(){
+					this.counter++;
+				},
+				alert(){
+					alert('alt pressend and clicked')
+				}
+			},
+			
+		});
+	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>

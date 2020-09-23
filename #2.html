@@ -1,0 +1,41 @@
+<!-- Topics: class binding, attribute binding , style  binding -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Js Basic</title>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery_google.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div id="app">
+			<br>
+			<h4 :style="styleSection" :title='title'>Speed of Sound</h4>
+			<br>
+			<h3 :class="[isActive ? 'alert alert-success':'alert alert-danger' ]">Speed of Universe</h3>
+			<br>
+			<h3 :class="{'alert alert-success': isActive,'col-lg-6':isMin}">Speed of Light</h3>
+		</div>
+	</div>
+	
+	<script>
+		new Vue ({
+			el:'#app',
+			data:{
+				styleSection:{
+					color:'red',
+					border:'2px solid black'
+				},
+				title:'This is the best title in the world',
+				isActive:true,
+				isMin:true
+			}
+		});
+	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>
